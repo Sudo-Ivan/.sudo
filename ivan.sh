@@ -4,34 +4,36 @@ figlet -f standard "Ivan Ryan"
 
 #print the date
 date
-#print the time
-time
-#print about myself
-print("I am cool")
+
+# print about myself
+echo "I am cool"
 sleep 1
-print("I am former military")
+echo "I am former military"
 sleep 1
-print("I am a programmer")
+echo "I am a programmer"
 sleep 2
 
-#would you like to know more?
-print("Would you like to know more?")
+# would you like to know more?
+echo "Would you like to know more?"
 sleep 1
-print("Yes or No")
-sleep 1
-#if yes then print more
-if Yes
-then
-print("I am a programmer")
-sleep 1
-print("I am a programmer")
-sleep 1
-print("I am a programmer")
-sleep 2
-
-if No
-then
-print("Goodbye")
+echo "Yes or No"
 sleep 1
 
-exit
+# if yes then print more
+read response
+if [ "$response" = "Yes" ]; then
+  echo "I am a programmer"
+  sleep 1
+  echo "I am a programmer"
+  sleep 1
+  echo "I am a programmer"
+  sleep 2
+elif [ "$response" = "No" ]; then
+  echo "Goodbye"
+  sleep 1
+  exit
+else
+  echo "Invalid response. Goodbye."
+  sleep 1
+  exit
+fi
