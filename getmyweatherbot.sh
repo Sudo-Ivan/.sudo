@@ -4,14 +4,37 @@ figlet -f standard "Get My Weather Bot Automatic Installation"
 
 # print the date
 date
+wait 1
 
 # update and install python3
 sudo apt-get update
-sudo apt-get install -y python3 python3-pip
+sudo apt-get install -y python3 python3-pip python3.10-venv
+wait 1
+
+# Would you like to install local or docker version of the bot?
+echo "Would you like to install the local or docker version of the bot?"
+echo "Enter 'local' for local version or 'docker' for docker version: "
+read version
+wait 1
+
+# if docker version is selected then install docker and docker-compose
+if [ $version = "docker" ]; then
+    sudo apt-get install -y docker docker-compose
+fi
+wait 1
 
 # Clone the repo
 git clone https://github.com/Sudo-Ivan/GetMyWeather.git
 cd GetMyWeather
+wait 1
+
+# if docker version is selected then run docker-compose
+if [ $version = "docker" ]; then
+    docker-compose up -d
+    echo "Get My Weather Bot has been started in the background."
+    exit
+fi
+wait 1
 
 # create a virtual environment for bot
 python3 -m venv env
