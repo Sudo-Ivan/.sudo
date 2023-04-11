@@ -1,0 +1,31 @@
+name: Generate Curl Commands
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate_curls:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+
+    - name: Generate curl commands
+      run: |
+        echo "# Server Scripts" > serverscripts.md
+        echo "" >> serverscripts.md
+        for file in $(find Servers -type f); do
+          raw_url="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_SHA}/${file}"
+          echo "curl -o $(basename $file) -L \"${raw_url}\"" >> serverscripts.md
+        done
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "GitHub Actions Bot"
+        git config --global user.email "github-actions@users.noreply.github.com"
+        git add serverscripts.md
+        git commit -m "Update serverscripts.md with new curl commands"
+        git push
