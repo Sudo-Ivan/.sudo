@@ -1,5 +1,7 @@
 # .sudo
 
+## A repo of my personal scripts for public release.
+
 ## Work in progress.
 
 ```bash
