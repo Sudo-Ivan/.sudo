@@ -41,12 +41,20 @@ commands = [
     "source ~/.cargo/env",
 ]
 
+def log_to_file(message):
+    with open("init_script_log.txt", "a") as log_file:
+        log_file.write(f"{message}\n")
+
 def run_command(command):
     try:
         subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT)
-        print(f"Completed: {command}\n")
+        message = f"Completed: {command}"
+        print(message)
+        log_to_file(message)
     except subprocess.CalledProcessError as e:
-        print(f"Error: {e.output.decode('utf-8').strip()}")
+        message = f"Error: {e.output.decode('utf-8').strip()}"
+        print(message)
+        log_to_file(message)
 
 if __name__ == "__main__":
     for command in commands:
