@@ -17,7 +17,7 @@ jobs:
       run: |
         echo "# Server Scripts" > serverscripts.md
         echo "" >> serverscripts.md
-        for file in $(find Servers -type f); do
+        for file in $(find Servers -type f \( -iname '*.py' -o -iname '*.sh' -o -iname '*.rs' \)); do
           raw_url="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_SHA}/${file}"
           echo "curl -o $(basename $file) -L \"${raw_url}\"" >> serverscripts.md
         done
