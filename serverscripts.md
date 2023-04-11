@@ -1,4 +1,4 @@
 # Server Scripts
 
-curl -o AlmaLinux -L "https://raw.githubusercontent.com/Sudo-Ivan/.sudo/ab395fb9161237706c719b8d4d8863d4b1e2cc88/Servers/AlmaLinux"
-curl -o serversetup.py -L "https://raw.githubusercontent.com/Sudo-Ivan/.sudo/ab395fb9161237706c719b8d4d8863d4b1e2cc88/9/serversetup.py"
+curl -o AlmaLinux -L "https://raw.githubusercontent.com/Sudo-Ivan/.sudo/c66d75ffc8ad017d76359932cd6f8f7b8513ccae/Servers/AlmaLinux"
+curl -o serversetup.py -L "https://raw.githubusercontent.com/Sudo-Ivan/.sudo/c66d75ffc8ad017d76359932cd6f8f7b8513ccae/9/serversetup.py"
